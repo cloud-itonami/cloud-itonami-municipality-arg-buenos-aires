@@ -1,0 +1,25 @@
+(ns ordinance.facts-test
+  (:require [clojure.string :as str]
+            [clojure.test :refer [deftest is]]
+            [ordinance.facts :as facts]))
+
+(deftest buenos-aires-has-spec-basis
+  (let [sb (facts/spec-basis "buenos-aires")]
+    (is (= 2 (count sb)))
+    (is (every? #(str/starts-with? (:ordinance/url %) "https://boletinoficial.buenosaires.gob.ar/") sb))))
+
+(deftest unknown-municipality-has-no-spec-basis
+  (is (nil? (facts/spec-basis "cordoba")))
+  (is (nil? (facts/spec-basis "zzz"))))
+
+(deftest coverage-is-honest
+  (let [c (facts/coverage ["buenos-aires" "cordoba"])]
+    (is (= 2 (:requested c)))
+    (is (= 1 (:covered c)))
+    (is (= ["cordoba"] (:missing-municipalities c)))))
+
+(deftest by-topic-filters
+  (is (= ["buenos-aires.ley-acceso-informacion-104"]
+         (mapv :ordinance/id (facts/by-topic "buenos-aires" :transparency))))
+  (is (empty? (facts/by-topic "buenos-aires" :labor)))
+  (is (empty? (facts/by-topic "cordoba" :public-order))))

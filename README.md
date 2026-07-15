@@ -1,0 +1,53 @@
+# cloud-itonami-municipality-arg-buenos-aires
+
+Municipal-ordinance compliance catalog for **Buenos Aires** — the
+TWELFTH municipality-level entry alongside
+[`cloud-itonami-municipality-jpn-tokyo`](https://github.com/cloud-itonami/cloud-itonami-municipality-jpn-tokyo),
+[`cloud-itonami-municipality-usa-washington-dc`](https://github.com/cloud-itonami/cloud-itonami-municipality-usa-washington-dc),
+[`cloud-itonami-municipality-gbr-london`](https://github.com/cloud-itonami/cloud-itonami-municipality-gbr-london),
+[`cloud-itonami-municipality-can-toronto`](https://github.com/cloud-itonami/cloud-itonami-municipality-can-toronto),
+[`cloud-itonami-municipality-deu-berlin`](https://github.com/cloud-itonami/cloud-itonami-municipality-deu-berlin),
+[`cloud-itonami-municipality-fra-paris`](https://github.com/cloud-itonami/cloud-itonami-municipality-fra-paris),
+[`cloud-itonami-municipality-nld-amsterdam`](https://github.com/cloud-itonami/cloud-itonami-municipality-nld-amsterdam),
+[`cloud-itonami-municipality-esp-madrid`](https://github.com/cloud-itonami/cloud-itonami-municipality-esp-madrid),
+[`cloud-itonami-municipality-kor-seoul`](https://github.com/cloud-itonami/cloud-itonami-municipality-kor-seoul),
+[`cloud-itonami-municipality-ita-roma`](https://github.com/cloud-itonami/cloud-itonami-municipality-ita-roma),
+and
+[`cloud-itonami-municipality-aus-sydney`](https://github.com/cloud-itonami/cloud-itonami-municipality-aus-sydney).
+Part of the [`cloud-itonami`](https://github.com/cloud-itonami)
+compliance-fact family (ADR-2607141700,
+`cloud-itonami-compliance-fact-federation`, in `com-junkawasaki/root`).
+
+## Scope
+
+A **read-only reference/archive** catalog — not an Advisor⊣Governor
+actuation actor. It proposes or executes nothing on the City of Buenos
+Aires's behalf.
+
+Coverage is reported honestly (see `ordinance.facts/coverage`): a
+municipality not in `catalog` has **no spec-basis**, full stop — never
+fabricate one.
+
+## Data
+
+- `src/ordinance/facts.cljc` — the catalog, source of truth.
+- `schema/ordinance.edn` — DataScript schema.
+- `data/datascript-tx.edn` — derived DataScript tx-data (query this
+  alongside other `cloud-itonami`/`etzhayyim` compliance-fact sources via
+  `com-junkawasaki/root`'s `scripts/compliance-fact-query.cljs`).
+
+The city's direct PDF republication of Ley 6017 rendered with a
+font-subsetting artifact worse than usual for this family (even the
+law's own title was illegible). Both entries here instead cite
+[boletinoficial.buenosaires.gob.ar](https://boletinoficial.buenosaires.gob.ar/)'s
+own HTML norm pages, which rendered fully: the **Código Contravencional
+de la Ciudad Autónoma de Buenos Aires** (Ley 1472, published
+2004-10-28) and the **Ley de Acceso a la Información** (Ley 104,
+promulgated 1998-12-17).
+
+## License
+
+AGPL-3.0-or-later (matches the `cloud-itonami-iso3166-*` /
+`-municipality-*` / `-assoc-*` / `-lei-*` convention). Ordinance text
+itself remains the City of Buenos Aires's; this repo stores only
+citation metadata (id/title/url/dates), not full text.
